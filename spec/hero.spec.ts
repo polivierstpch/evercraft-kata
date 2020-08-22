@@ -31,6 +31,11 @@ describe('Hero', () => {
         it('should default to 10', () => {
             expect(hero.getArmorClass()).toBe(10);
         });
+
+        it('should be raised when dextrous', () => {
+            hero.getDexterity().setScore(14);
+            expect(hero.getArmorClass()).toBe(12);
+        });
     });
 
     describe('#hitPoints', () => {
@@ -38,9 +43,28 @@ describe('Hero', () => {
             expect(hero.getHitPoints()).toBe(5);
         });
 
+        it('should be raised when hardy', () => {
+            hero.getConstitution().setScore(14);
+            expect(hero.getHitPoints()).toBe(7);
+        });
+
+        it('should be lowered when feeble', () => {
+            hero.getConstitution().setScore(7);
+            expect(hero.getHitPoints()).toBe(3);
+        });
+
+        it('should not go below 0', () => {
+            hero.getConstitution().setScore(1);
+            expect(hero.getHitPoints()).toBe(1);
+        });
+
+    });
+
+
+    describe('#currentHitPoints', () => {
         it('should get lowered when damaged', () => {
             hero.damage(1);
-            expect(hero.getHitPoints()).toBe(4);
+            expect(hero.getCurrentHitPoints()).toBe(4);
         });
     });
 

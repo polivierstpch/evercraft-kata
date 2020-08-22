@@ -16,7 +16,7 @@ export class Hero {
     ) { }
 
     isAlive(): boolean {
-        return this.getHitPoints() > 0;
+        return this.getCurrentHitPoints() > 0;
     }
 
     getName(): string {
@@ -60,11 +60,15 @@ export class Hero {
     }
 
     getArmorClass(): number {
-        return 10;
+        return 10 + this._dex.getModifier();
     }
 
     getHitPoints(): number {
-        return this._hitPoints - this._damage;
+        return Math.max(this._hitPoints + this._con.getModifier(), 1);
+    }
+
+    getCurrentHitPoints(): number {
+        return this.getHitPoints() - this._damage;
     }
 
     damage(value: number): void {
