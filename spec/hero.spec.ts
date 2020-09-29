@@ -66,6 +66,24 @@ describe('Hero', () => {
             hero.damage(1);
             expect(hero.getCurrentHitPoints()).toBe(4);
         });
+        it('should default to 5', () => {
+            expect(hero.getCurrentHitPoints()).toBe(5);
+        });
+
+        it('should be raised when hardy', () => {
+            hero.getConstitution().setScore(14);
+            expect(hero.getCurrentHitPoints()).toBe(7);
+        });
+
+        it('should be lowered when feeble', () => {
+            hero.getConstitution().setScore(7);
+            expect(hero.getCurrentHitPoints()).toBe(3);
+        });
+
+        it('should not go below 0', () => {
+            hero.getConstitution().setScore(1);
+            expect(hero.getCurrentHitPoints()).toBe(1);
+        });
     });
 
     describe('#isAlive', () => {
@@ -86,7 +104,6 @@ describe('Hero', () => {
         it('should be dead when hitpoints are lower than 0', () => {
             hero.damage(6);
             expect(hero.isAlive()).toBe(false);
-        })
-    })
-
-})
+        });
+    });
+});

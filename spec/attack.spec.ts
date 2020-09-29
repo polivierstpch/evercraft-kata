@@ -35,7 +35,7 @@ describe('Attack', () => {
             { roll: 11, defenderDexterity: 14, isHit: false, resultHp: 5 }],
         ['should be easier to hit when defender is clumsy',
             { roll: 9, defenderDexterity: 7, isHit: true, resultHp: 4 }],
-        ['should be a critical hit on a roll of 20', 
+        ['should be a critical hit on a roll of 20',
             { roll: 20, defenderDexterity: 10, isHit: true, resultHp: 3 }],
     ])('%s', (_, data) => {
         defender.getDexterity().setScore(data.defenderDexterity);
