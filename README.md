@@ -1,9 +1,5 @@
 # The EverCraft Kata
 
-## For this branch
-Typescript is used as the development language.
-Jest + TS-Jest is used for as the testing framework.
-
 ## Description
 
 In this exercise, you will build out a domain model for a MMORPG called EverCraft for the company Blizzards of the Coast. Just follow the requirements below, pairing and test driving your code of course, and have fun.
