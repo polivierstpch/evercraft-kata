@@ -10,35 +10,23 @@ namespace Evercraft.Tests
         private Character character = new Character();
 
         [Fact]
-        public void HaveADefaultNameAtCreation()
+        public void HaveDefaultValuesAtCreation()
         {
-            character.Name.Should().Be("No Name");
-        }
-
-        [Fact]
-        public void HaveADefaultAlignmentAtCreation()
-        {
-            character.Alignment.Should().Be(Alignment.Neutral);
-        }
-
-        [Fact]
-        public void BeAbleToHaveItsNameChanged()
-        {
-            string name = "Zephyriana";
-            
-            character.Name = name;
-
-            character.Name.Should().Be(name);
+            character.Name.Should().Be(Character.DEFAULT_NAME);
+            character.Alignment.Should().Be(Character.DEFAULT_ALIGNMENT);
+            character.ArmorClass.Should().Be(Character.BASE_AC);
         }
 
         [Theory]
-        [InlineData(Alignment.Evil)]
-        [InlineData(Alignment.Neutral)]
-        [InlineData(Alignment.Good)]
-        public void HaveAnAlignmentThatCanChange(Alignment alignment)
+        [InlineData("Zangdar", Alignment.Evil)]
+        [InlineData("Numie", Alignment.Neutral)]
+        [InlineData("Kalderan", Alignment.Good)]
+        public void BeAbleToHaveItsPropertiesChanged(string name, Alignment alignment)
         {
+            character.Name = name;
             character.Alignment = alignment;
 
+            character.Name.Should().Be(name);
             character.Alignment.Should().Be(alignment);
         }
 
