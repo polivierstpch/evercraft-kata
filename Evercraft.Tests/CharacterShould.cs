@@ -6,7 +6,12 @@ namespace Evercraft.Tests
 {
     public class CharacterShould
     {
-        private Character character = new Character();
+        private readonly Character character;
+
+        public CharacterShould()
+        {
+            character = new Character();
+        }
 
         [Fact]
         public void HaveDefaultValuesAtCreation()
