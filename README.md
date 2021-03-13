@@ -1,4 +1,4 @@
-# The EverCraft Kata
+# The EverCraft Kata 
 
 In this exercise, you will build out a domain model for a MMORPG called EverCraft for the company Blizzards of the Coast. Just follow the requirements below, pairing and test driving your code of course, and have fun.
 
