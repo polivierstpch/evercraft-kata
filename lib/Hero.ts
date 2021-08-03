@@ -63,12 +63,12 @@ export class Hero {
         return 10 + this._dex.getModifier();
     }
 
-    getHitPoints(): number {
+    getMaxHitPoints(): number {
         return Math.max(this._hitPoints + this._con.getModifier(), 1);
     }
 
     getCurrentHitPoints(): number {
-        return this.getHitPoints() - this._damage;
+        return this.getMaxHitPoints() - this._damage;
     }
 
     damage(value: number): void {

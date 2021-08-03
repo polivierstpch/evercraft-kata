@@ -40,22 +40,22 @@ describe('Hero', () => {
 
     describe('#hitPoints', () => {
         it('should default to 5', () => {
-            expect(hero.getHitPoints()).toBe(5);
+            expect(hero.getMaxHitPoints()).toBe(5);
         });
 
         it('should be raised when hardy', () => {
             hero.getConstitution().setScore(14);
-            expect(hero.getHitPoints()).toBe(7);
+            expect(hero.getMaxHitPoints()).toBe(7);
         });
 
         it('should be lowered when feeble', () => {
             hero.getConstitution().setScore(7);
-            expect(hero.getHitPoints()).toBe(3);
+            expect(hero.getMaxHitPoints()).toBe(3);
         });
 
         it('should not go below 0', () => {
             hero.getConstitution().setScore(1);
-            expect(hero.getHitPoints()).toBe(1);
+            expect(hero.getMaxHitPoints()).toBe(1);
         });
 
     });
