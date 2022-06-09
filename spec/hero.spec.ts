@@ -6,56 +6,55 @@ describe('Hero', () => {
 
     describe('#name', () => {
         it('should default to empty string', () => {
-            expect(hero.getName()).toBe('');
+            expect(hero.name).toBe('');
         });
 
         it('should be able to be changed', () => {
-            let name = 'Kalderan';
-            hero.setName(name);
-            expect(hero.getName()).toBe(name);
+            hero.name = 'Kalderan';
+            expect(hero.name).toBe(name);
         });
     });
 
     describe('#alignment', () => {
         it('should default to neutral', () => {
-            expect(hero.getAlignment()).toBe(Alignment.Neutral);
+            expect(hero.alignment).toBe(Alignment.Neutral);
         });
 
         it('can be changed', () => {
-            hero.setAlignment(Alignment.Good);
-            expect(hero.getAlignment()).toBe(Alignment.Good);
+            hero.alignment = Alignment.Good;
+            expect(hero.alignment).toBe(Alignment.Good);
         });
     });
 
     describe('#armorClass', () => {
         it('should default to 10', () => {
-            expect(hero.getArmorClass()).toBe(10);
+            expect(hero.armorClass).toBe(10);
         });
 
         it('should be raised when dextrous', () => {
-            hero.getDexterity().setScore(14);
-            expect(hero.getArmorClass()).toBe(12);
+            hero.dexterity.score = 14;
+            expect(hero.armorClass).toBe(12);
         });
     });
 
     describe('#hitPoints', () => {
         it('should default to 5', () => {
-            expect(hero.getMaxHitPoints()).toBe(5);
+            expect(hero.maxHitPoints).toBe(5);
         });
 
         it('should be raised when hardy', () => {
-            hero.getConstitution().setScore(14);
-            expect(hero.getMaxHitPoints()).toBe(7);
+            hero.constitution.score = 14;
+            expect(hero.maxHitPoints).toBe(7);
         });
 
         it('should be lowered when feeble', () => {
-            hero.getConstitution().setScore(7);
-            expect(hero.getMaxHitPoints()).toBe(3);
+            hero.constitution.score = 7;
+            expect(hero.maxHitPoints).toBe(3);
         });
 
         it('should not go below 0', () => {
-            hero.getConstitution().setScore(1);
-            expect(hero.getMaxHitPoints()).toBe(1);
+            hero.constitution.score = 1;
+            expect(hero.maxHitPoints).toBe(1);
         });
 
     });
@@ -64,25 +63,25 @@ describe('Hero', () => {
     describe('#currentHitPoints', () => {
         it('should get lowered when damaged', () => {
             hero.damage(1);
-            expect(hero.getCurrentHitPoints()).toBe(4);
+            expect(hero.currentHitPoints).toBe(4);
         });
         it('should default to 5', () => {
-            expect(hero.getCurrentHitPoints()).toBe(5);
+            expect(hero.currentHitPoints).toBe(5);
         });
 
         it('should be raised when hardy', () => {
-            hero.getConstitution().setScore(14);
-            expect(hero.getCurrentHitPoints()).toBe(7);
+            hero.constitution.score = 14;
+            expect(hero.currentHitPoints).toBe(7);
         });
 
         it('should be lowered when feeble', () => {
-            hero.getConstitution().setScore(7);
-            expect(hero.getCurrentHitPoints()).toBe(3);
+            hero.constitution.score = 7;
+            expect(hero.currentHitPoints).toBe(3);
         });
 
         it('should not go below 0', () => {
-            hero.getConstitution().setScore(1);
-            expect(hero.getCurrentHitPoints()).toBe(1);
+            hero.constitution.score = 1;
+            expect(hero.currentHitPoints).toBe(1);
         });
     });
 

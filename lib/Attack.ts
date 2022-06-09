@@ -7,14 +7,14 @@ export class Attack {
     ) { }
 
     resolve(roll: number): boolean {
-        let isAHit = roll + this._attacker.getStrength().getModifier() >= this._defender.getArmorClass();
+        let isAHit = roll + this._attacker.strength.modifier >= this._defender.armorClass;
         let isACrit = roll === 20;
 
         if (isACrit) {
-            this._defender.damage((1 + this._attacker.getStrength().getModifier()) * 2);
+            this._defender.damage((1 + this._attacker.strength.modifier) * 2);
             return isACrit;
         } else if (isAHit) {
-            this._defender.damage(1 + this._attacker.getStrength().getModifier());
+            this._defender.damage(1 + this._attacker.strength.modifier);
         }
 
         return isAHit;

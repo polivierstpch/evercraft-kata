@@ -18,16 +18,16 @@ describe('Attack', () => {
             { roll: 10, attackerStrength: 10, isHit: true, resultHp: 4 }],
         ['should hit when roll is over armor class',
             { roll: 11, attackerStrength: 10, isHit: true, resultHp: 4 }],
-        ['should be a critical hit on a roll of 20', // critical hit is always a hit
+        ['should be a critical hit on a roll of 20',
             { roll: 20, attackerStrength: 10, isHit: true, resultHp: 3 }],
         ['should be a hit more easily when stronger',
             { roll: 8, attackerStrength: 14, isHit: true, resultHp: 2 }],
         ['should be harder to hit when weaker',
             { roll: 10, attackerStrength: 7, isHit: false, resultHp: 5 }],
     ])('%s', (_, data) => {
-        attacker.getStrength().setScore(data.attackerStrength);
+        attacker.strength.score = data.attackerStrength;
         expect(attack.resolve(data.roll)).toBe(data.isHit);
-        expect(defender.getCurrentHitPoints()).toBe(data.resultHp);
+        expect(defender.currentHitPoints).toBe(data.resultHp);
     });
 
     test.each([
@@ -38,8 +38,8 @@ describe('Attack', () => {
         ['should be a critical hit on a roll of 20',
             { roll: 20, defenderDexterity: 10, isHit: true, resultHp: 3 }],
     ])('%s', (_, data) => {
-        defender.getDexterity().setScore(data.defenderDexterity);
+        defender.dexterity.score = data.defenderDexterity;
         expect(attack.resolve(data.roll)).toBe(data.isHit);
-        expect(defender.getCurrentHitPoints()).toBe(data.resultHp);
+        expect(defender.currentHitPoints).toBe(data.resultHp);
     });
 });

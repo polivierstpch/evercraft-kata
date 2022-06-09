@@ -16,59 +16,59 @@ export class Hero {
     ) { }
 
     isAlive(): boolean {
-        return this.getCurrentHitPoints() > 0;
+        return this.currentHitPoints > 0;
     }
 
-    getName(): string {
+    get name(): string {
         return this._name;
     }
 
-    setName(value: string): void {
+    set name(value: string) {
         this._name = value;
     }
 
-    getAlignment(): Alignment {
+    get alignment(): Alignment {
         return this._alignment;
     }
 
-    setAlignment(alignment: Alignment): void {
+    set alignment(alignment: Alignment) {
         this._alignment = alignment;
     }
 
-    getStrength(): Ability {
+    get strength(): Ability {
         return this._str;
     }
 
-    getDexterity(): Ability {
+    get dexterity(): Ability {
         return this._dex;
     }
 
-    getConstitution(): Ability {
+    get constitution(): Ability {
         return this._con;
     }
 
-    getIntelligence(): Ability {
+    get intelligence(): Ability {
         return this._int;
     }
 
-    getWisdom(): Ability {
+    get wisdom(): Ability {
         return this._wis;
     }
 
-    getCharisma(): Ability {
+    get charisma(): Ability {
         return this._cha;
     }
 
-    getArmorClass(): number {
-        return 10 + this._dex.getModifier();
+    get armorClass(): number {
+        return 10 + this._dex.modifier;
     }
 
-    getMaxHitPoints(): number {
-        return Math.max(this._hitPoints + this._con.getModifier(), 1);
+    get maxHitPoints(): number {
+        return Math.max(this._hitPoints + this._con.modifier, 1);
     }
 
-    getCurrentHitPoints(): number {
-        return this.getMaxHitPoints() - this._damage;
+    get currentHitPoints(): number {
+        return this.maxHitPoints - this._damage;
     }
 
     damage(value: number): void {

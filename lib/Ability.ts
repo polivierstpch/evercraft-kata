@@ -1,18 +1,18 @@
 export class Ability {
     constructor(private _score: number = 10) { }
 
-    getScore(): number {
+    get score(): number {
         return this._score;
     }
 
-    setScore(value: number) {
+    set score(value: number) {
         if (value < 1 || value > 20)
             throw ('Ability score cannot be set below 1 or over 20!');
         this._score = value;
     }
 
-    getModifier(): number {
-        return Math.floor((this.getScore() / 2) - 5);
+    get modifier(): number {
+        return Math.floor((this.score / 2) - 5);
     }
 }
 
